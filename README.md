@@ -7,10 +7,12 @@ sha256sum nome_do_arquivo
 
 Como executar os programas:
 sudo chmod +x block_input.sh;
-./block_input.sh
+
+./block_input.sh;
 
 Fazer o mesmo com os outros.
-Abaixo, roteiro do vídeo com as explicações do código iptables e outros: https://www.youtube.com/watch?v=D0iZb3U5M6s&t=4s 
+Abaixo, roteiro do vídeo com as explicações do código iptables e outros: 
+https://www.youtube.com/watch?v=D0iZb3U5M6s&t=4s 
 
 ##########################################################################################################################
 Configurar IPTABLES linux firewall anti-scan, tática MAC SPOOFING para ser anônimo, Curso segurança, [só conexão de saída)
@@ -24,16 +26,6 @@ https://github.com/leandroibov/iptables_kernel_basico/
 
 Autor: Leandro Santos
 https:www.traderprofissional.com.br
-
-Links para baixar os Scripts do iptables e nmap automatizado:
-#Scripto iptables -> block_input.sh
-https://drive.google.com/file/d/1X8sGrveegvEMqtkV9Qoxyaz_rKDX76O7/view?usp=drive_link
-#apagaregras.sh
-https://drive.google.com/file/d/1UXJK4GBDaoLYzzDmK8lcyn77Z6nuPQex/view?usp=drive_link
-#listafirewall.sh
-https://drive.google.com/file/d/1xmkl5dZjwSGw7OFIHcKoTqzFCakdnxRZ/view?usp=drive_link
-#Scan nmap principais técnicas -> scan2.sh
-https://drive.google.com/file/d/17ULAeokXkX6ynFrO1NwphZRr103nEmAW/view?usp=drive_link
 
 ###############################
 Barreira contra scanning do ISP

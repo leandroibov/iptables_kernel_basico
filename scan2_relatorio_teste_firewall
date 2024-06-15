@@ -1,0 +1,182 @@
+_________________________________________________________________________________
+EAGLE NMAP SCANNING NETWORK SCRIPT 2
+All nmap scanning technics automated
+Developer: [Leandro Santos]
+_________________________________________________________________________________
+_________________________________________________________________________________
+
+#################################################################################
+Type of networks and options
+10.0.0.0/8 
+172.16.0.0/12 
+192.168.0.0/16
+192.168.0.0/16 172.16.0.0/12 10.0.0.0/8
+One specific ip target. Example 192.168.0.107
+One specific network type different. Example 192.168.0.0/24 or 192.168.0.0/16
+#################################################################################
+
+_________________________________________________________________________________
+_________________________________________________________________________________
+NMAP Scanning Techniques
+_________________________________________________________________________________
+_________________________________________________________________________________
+
+#################################################################################
+#TCP syn port scan -> sudo nmap -sS ip_address
+#################################################################################
+Starting Nmap 7.80 ( https://nmap.org ) at 2024-06-04 22:56 -03
+Nmap scan report for 192.168.0.132
+Host is up (0.00019s latency).
+All 1000 scanned ports on 192.168.0.132 are filtered
+MAC Address: 00:15:F0:E9:12:47 (EGO BV)
+
+Nmap done: 1 IP address (1 host up) scanned in 21.34 seconds
+
+#################################################################################
+#TCP connect port scan -> sudo nmap -sT ip_address
+#################################################################################
+Starting Nmap 7.80 ( https://nmap.org ) at 2024-06-04 22:56 -03
+Nmap scan report for 192.168.0.132
+Host is up (0.00015s latency).
+All 1000 scanned ports on 192.168.0.132 are filtered
+MAC Address: 00:15:F0:E9:12:47 (EGO BV)
+
+Nmap done: 1 IP address (1 host up) scanned in 21.24 seconds
+
+#################################################################################
+#UDP port scan -> sudo nmap –sU ip_address
+#################################################################################
+Starting Nmap 7.80 ( https://nmap.org ) at 2024-06-04 22:56 -03
+Nmap scan report for 192.168.0.132
+Host is up (0.00014s latency).
+All 1000 scanned ports on 192.168.0.132 are filtered
+MAC Address: 00:15:F0:E9:12:47 (EGO BV)
+
+Nmap done: 1 IP address (1 host up) scanned in 21.35 seconds
+
+#################################################################################
+#TCP ack port scan -> sudo nmap –sA ip_address
+#################################################################################
+Starting Nmap 7.80 ( https://nmap.org ) at 2024-06-04 22:57 -03
+Nmap scan report for 192.168.0.132
+Host is up (0.00016s latency).
+All 1000 scanned ports on 192.168.0.132 are filtered
+MAC Address: 00:15:F0:E9:12:47 (EGO BV)
+
+Nmap done: 1 IP address (1 host up) scanned in 21.35 seconds
+
+_________________________________________________________________________________
+_________________________________________________________________________________
+#Host Discovery
+_________________________________________________________________________________
+_________________________________________________________________________________
+
+#################################################################################
+#Only port scan -> sudo nmap -Pn ip_address
+#################################################################################
+Starting Nmap 7.80 ( https://nmap.org ) at 2024-06-04 22:57 -03
+Nmap scan report for 192.168.0.132
+Host is up (0.00019s latency).
+All 1000 scanned ports on 192.168.0.132 are filtered
+MAC Address: 00:15:F0:E9:12:47 (EGO BV)
+
+Nmap done: 1 IP address (1 host up) scanned in 21.31 seconds
+
+#################################################################################
+#Only host discover -> sudo nmap -sn ip_address
+#################################################################################
+Starting Nmap 7.80 ( https://nmap.org ) at 2024-06-04 22:58 -03
+Nmap scan report for 192.168.0.132
+Host is up (0.00016s latency).
+MAC Address: 00:15:F0:E9:12:47 (EGO BV)
+Nmap done: 1 IP address (1 host up) scanned in 0.13 seconds
+
+#################################################################################
+#Arp discovery on a local network -> sudo nmap -PR ip_address
+#################################################################################
+Starting Nmap 7.80 ( https://nmap.org ) at 2024-06-04 22:58 -03
+Nmap scan report for 192.168.0.132
+Host is up (0.00016s latency).
+All 1000 scanned ports on 192.168.0.132 are filtered
+MAC Address: 00:15:F0:E9:12:47 (EGO BV)
+
+Nmap done: 1 IP address (1 host up) scanned in 21.32 seconds
+
+#################################################################################
+#Disable DNS resolution -> sudo nmap -n ip_address
+#################################################################################
+Starting Nmap 7.80 ( https://nmap.org ) at 2024-06-04 22:58 -03
+Nmap scan report for 192.168.0.132
+Host is up (0.00018s latency).
+All 1000 scanned ports on 192.168.0.132 are filtered
+MAC Address: 00:15:F0:E9:12:47 (EGO BV)
+
+Nmap done: 1 IP address (1 host up) scanned in 21.32 seconds
+
+_________________________________________________________________________________
+________________________________________________________________________________
+#Service Version and OS Detection
+_________________________________________________________________________________
+_________________________________________________________________________________
+
+#################################################################################
+#Detect the version of services running -> sudo nmap -sV ip_address
+#################################################################################
+Starting Nmap 7.80 ( https://nmap.org ) at 2024-06-04 22:58 -03
+Nmap scan report for 192.168.0.132
+Host is up (0.00021s latency).
+All 1000 scanned ports on 192.168.0.132 are filtered
+MAC Address: 00:15:F0:E9:12:47 (EGO BV)
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 21.85 seconds
+
+#################################################################################
+#Aggressive scan -> sudo nmap -A ip_address
+#################################################################################
+Starting Nmap 7.80 ( https://nmap.org ) at 2024-06-04 22:59 -03
+Nmap scan report for 192.168.0.132
+Host is up (0.00019s latency).
+All 1000 scanned ports on 192.168.0.132 are filtered
+MAC Address: 00:15:F0:E9:12:47 (EGO BV)
+Too many fingerprints match this host to give specific OS details
+Network Distance: 1 hop
+
+TRACEROUTE
+HOP RTT     ADDRESS
+1   0.19 ms 192.168.0.132
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 24.83 seconds
+
+#################################################################################
+#Detect operating system of the target -> sudo nmap -O ip_address
+#################################################################################
+Starting Nmap 7.80 ( https://nmap.org ) at 2024-06-04 22:59 -03
+Nmap scan report for 192.168.0.132
+Host is up (0.00018s latency).
+All 1000 scanned ports on 192.168.0.132 are filtered
+MAC Address: 00:15:F0:E9:12:47 (EGO BV)
+Too many fingerprints match this host to give specific OS details
+Network Distance: 1 hop
+
+OS detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 24.06 seconds
+
+_________________________________________________________________________________
+_________________________________________________________________________________
+#IDS Evasion
+_________________________________________________________________________________
+_________________________________________________________________________________
+
+#################################################################################
+#Use fragmented IP packets -> sudo nmap -f ip_address
+#################################################################################
+Starting Nmap 7.80 ( https://nmap.org ) at 2024-06-04 22:59 -03
+Nmap scan report for 192.168.0.132
+Host is up (0.00015s latency).
+All 1000 scanned ports on 192.168.0.132 are filtered
+MAC Address: 00:15:F0:E9:12:47 (EGO BV)
+
+Nmap done: 1 IP address (1 host up) scanned in 21.30 seconds
+

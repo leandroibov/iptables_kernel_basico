@@ -224,8 +224,10 @@ sudo echo "";
 #############################################
 Mac Spoofing com Macchanger
 #############################################
-sudo apt install macchanger
+sudo apt install macchanger;
+
 sudo macchanger -A interface_de_rede;
+
 
 #############################################
 Teste com nmap, todos as técnicas de scanning
@@ -238,18 +240,25 @@ sudo apt update -y;
 sudo apt install nmap -y;
 
 #checar ip da rede para scanear tudo ou ip do alvo
-nmcli
-./scan2.sh
-número do ip do alvo
 
+nmcli;
+
+./scan2.sh;
+
+número do ip do alvo;
+
+Testes e resultados:
 sudo telnet ip_do_alvo;
 sudo ssh ip_do_alvo;
 
 Resultado do teste:
-root@debian:/home/leking/Downloads# sudo telnet 192.168.0.132
+root@debian:/home/leking/Downloads# 
+sudo telnet 192.168.0.132;
 Trying 192.168.0.132...
 telnet: Unable to connect to remote host: Connection timed out
-root@debian:/home/leking/Downloads# sudo ssh 192.168.0.132
+root@debian:/home/leking/Downloads# 
+sudo ssh 192.168.0.132;
+
 ssh: connect to host 192.168.0.132 port 22: Connection timed out
 
 

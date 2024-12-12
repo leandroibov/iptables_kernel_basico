@@ -1,0 +1,21 @@
+#!/bin/bash
+#LISTA REGRAS FIREWALL
+sudo echo "";
+echo "############################ LISTA REGRAS IPTABLES ############################"
+sudo echo "";
+sudo echo "############################ Table Filter ############################";
+sudo iptables -t filter -S;
+sudo echo "";
+
+sudo echo "############################ Table Nat ############################";
+sudo iptables -t nat -S;
+sudo echo "";
+
+sudo echo "############################ Table Mangle ############################";
+sudo iptables -t mangle -S;
+sudo echo "";
+
+sudo echo "############################ Table Raw ############################";
+sudo iptables -t raw -S;
+sudo echo "############################ FIM LISTAR REGRAS IPTABLES ############################";
+sudo echo "";

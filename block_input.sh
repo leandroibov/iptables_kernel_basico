@@ -1,4 +1,10 @@
+#!/bin/bash
 ##############Script################################
+echo "Anti-scan iptables rules setup up"
+nmcli connection show
+echo
+read -p "Enter the name of the primary network interface: " network
+echo
 
 #DESABILITE A REDE PARA SEGURANÇA DA RECONFIGURAÇÃO
 sudo echo "DESABILITANDO A REDE PARA SEGURANÇA DA RECONFIGURAÇÃO EM OFFLINE";
@@ -75,32 +81,51 @@ sudo iptables -t raw -Z;
 
 sudo echo "";
 
-
-# Definindo políticas padrões
+# Setting default policies
 ######################
-sudo iptables  -P  INPUT DROP  # iptables a política padrão da chain INPUT é proibir tudo
-sudo iptables  -P  FORWARD DROP
-sudo iptables  -P  OUTPUT ACCEPT
+sudo iptables -P INPUT DROP   # Set the default policy of the INPUT chain to DROP everything
+sudo iptables -P FORWARD DROP
+sudo iptables -P OUTPUT ACCEPT
 
-
-# Liberando a Loopback
+# Allowing Loopback
 ####################
-sudo iptables -A  INPUT -i lo -j ACCEPT
-sudo iptables -A  FORWARD -i lo -j DROP
+sudo iptables -A INPUT -i lo -j ACCEPT
+sudo iptables -A FORWARD -i lo -j DROP
 
-## Regras de segurança na internet e acessos
-## ethx tem que mudar, use ifconfig e cheque qual é, no caso ether
+## Internet security rules and access
+## Replace ethx with the appropriate interface, check using ifconfig
 #####################################
 sudo iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 sudo iptables -A FORWARD -m state --state ESTABLISHED,RELATED -j DROP
 
-#Bloqueando novas conexões e conexões invalidas após ter a conexão estabelecida e relatada
+# Blocking new connections and invalid connections after an established connection
 sudo iptables -A INPUT -m state --state INVALID -j DROP
 sudo iptables -A FORWARD -m state --state INVALID -j DROP
 sudo iptables -A INPUT -m state --state NEW -j DROP
 
-#SOMENTE PCS DENTRO DA REDE PODEM SE CONECTAR
-sudo iptables -A INPUT -p tcp --syn -s 192.168.0.0/255.255.255.0 -j ACCEPT;
+# Get the IP address and netmask of the network interface (assuming eth0, adjust if needed)
+ip_info=$(ip addr show $network | grep 'inet ' | awk '{print $2}')
+ip="${ip_info%%/*}"         # Extract the IP address (e.g., 192.168.0.10)
+mask="${ip_info##*/}"       # Extract the netmask (e.g., 24)
+
+# Calculate the network address based on the mask
+IFS='.' read -r i1 i2 i3 i4 <<< "$ip"
+
+# Determine the network address based on the mask
+if [ "$mask" -eq 24 ]; then
+    network="${i1}.${i2}.${i3}.0/24"
+elif [ "$mask" -eq 16 ]; then
+    network="${i1}.${i2}.0.0/16"
+elif [ "$mask" -eq 8 ]; then
+    network="${i1}.0.0.0/8"
+else
+    # For other masks, still using the original IP with mask
+    network="$ip/$mask"
+fi
+
+# Add the rule to iptables
+sudo iptables -A INPUT -p tcp --syn -s "$network" -j ACCEPT
+#echo "Rule added for network: $network/255.255.255.0"
 sudo iptables -A INPUT -p tcp --syn -j DROP;
 sudo iptables -A INPUT -i ppp0 -p udp --dport 0:30000 -j DROP;
 
